@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TestingController">
+   <children>
+      <Button fx:id="backToMain" layoutX="458.0" layoutY="506.0" mnemonicParsing="false" onAction="#toMainScreen" text="Back to Main" />
+      <CheckBox fx:id="Merge" layoutX="120.0" layoutY="193.0" mnemonicParsing="false" text="Merge" />
+      <CheckBox fx:id="Bubble" layoutX="124.0" layoutY="409.0" mnemonicParsing="false" text="Bubble" />
+      <CheckBox fx:id="Quick" layoutX="122.0" layoutY="300.0" mnemonicParsing="false" text="Quick" />
+      <CheckBox fx:id="Heap" layoutX="122.0" layoutY="243.0" mnemonicParsing="false" text="Heap" />
+      <CheckBox fx:id="Insertion" layoutX="122.0" layoutY="351.0" mnemonicParsing="false" text="Insertion" />
+   </children>
+</AnchorPane>

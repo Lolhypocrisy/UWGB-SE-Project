@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="740.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+   <children>
+      <AnchorPane layoutX="68.0" layoutY="40.0" prefHeight="740.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="Tester" layoutX="25.0" layoutY="669.0" mnemonicParsing="false" onAction="#toTestScreen" text="Algorithm Tester" />
+            <ComboBox fx:id="selectAlgo" layoutX="339.0" layoutY="569.0" onAction="#SelectAlgo" prefWidth="150.0" promptText="Select Algorithm" visibleRowCount="5">
+            	<items>
+            		<FXCollections fx:factory="observableArrayList">
+            			<String fx:id="merge" fx:value="Merge" />
+            			<String fx:id="bubble" fx:value="Bubble" />
+           			<String fx:id="quick" fx:value="Quick" />
+            			<String fx:id="heap" fx:value="Heap" />
+            			<String fx:id="insertion" fx:value="Insertion" />
+            		</FXCollections>
+            	</items>
+            </ComboBox>
+            <Pane layoutX="766.0" prefHeight="740.0" prefWidth="433.0">
+               <children>
+                  <ComboBox fx:id="Lang" layoutX="142.0" layoutY="682.0" onAction="#SelectLang" prefWidth="150.0" promptText="Select Language">
+                    <items>
+            			<FXCollections fx:factory="observableArrayList">
+            				<String fx:id="java" fx:value="Java" />
+            				<String fx:id="cpp" fx:value="C++" />
+           			<String fx:id="jscript" fx:value="JavaScript" />
+            				<String fx:id="python" fx:value="Python" />
+            				<String fx:id="pseudo" fx:value="Pseudo Code" />
+            		</FXCollections>
+            	</items>
+            	</ComboBox>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
