@@ -24,11 +24,12 @@ public int[] insertion(int[] input){
 }
 	
 //Merge
-public void startMerge(int inputArr[]) {
-    array = inputArr;
+public int[] startMerge(int input[]) {
+    array = input;
     length = array.length;
-    int[] tempMergArr = new int[length];
+    tempMergArr = new int[length];
     mergeSort(0, length - 1);
+  return array;
 }
 
 public void mergeSort(int lowerIndex, int higherIndex) {
@@ -40,11 +41,11 @@ public void mergeSort(int lowerIndex, int higherIndex) {
        // Below step sorts the right side of the array
        mergeSort(middle + 1, higherIndex);
        // Now merge both sides
-       mergeParts(lowerIndex, middle, higherIndex);
+      array = mergeParts(lowerIndex, middle, higherIndex);
    }
 }
 
-public void mergeParts(int lowerIndex, int middle, int higherIndex) {
+public int[] mergeParts(int lowerIndex, int middle, int higherIndex) {
 	 
     for (int i = lowerIndex; i <= higherIndex; i++) {
         tempMergArr[i] = array[i];
@@ -67,7 +68,7 @@ public void mergeParts(int lowerIndex, int middle, int higherIndex) {
         k++;
         i++;
     }
-
+    return array;
 }
 
 //Bubble
@@ -88,14 +89,14 @@ public int[] bubbleSort(int[] numArray) {
 }
 
 //Quick
-public void qSort(int[] values)
+public int[] qSort(int[] values)
 {
 	array = values;
 	length = array.length;
-	quickSort(0, length - 1);
+	return quickSort(0, length - 1);
 }
 
-public void quickSort(int lowerIndex, int higherIndex) {
+public int[] quickSort(int lowerIndex, int higherIndex) {
 	int i = lowerIndex;
 	int j = higherIndex;
 	int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
@@ -118,6 +119,7 @@ public void quickSort(int lowerIndex, int higherIndex) {
 	if (i < higherIndex) {
 		quickSort(i, higherIndex);
 	}
+	return array;
 }
 
 public void exchangeNumbers(int i, int j) {
@@ -127,13 +129,14 @@ public void exchangeNumbers(int i, int j) {
 }
 
 //Heap
-public void heapSort(int array[]) {
+public int[] heapSort(int array[]) {
 	heapify(array);
 	for (int i = N; i > 0; i--) {
 		swap(array, 0, i);
 		N = N - 1;
 		maxHeap(array, 0);
 	}
+	return array;
 }
 
 public void heapify(int array[]) {

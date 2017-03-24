@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -20,18 +21,23 @@ public class MainController extends main {
 	private ComboBox selectAlgo, Lang;
 	@FXML
 	private Label lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14;
+	@FXML
+	private TextArea code;
 	private String lang;
 	private Sorter sort = new Sorter();
+	private CodeHelper ch =  new CodeHelper();
 	private int[] array = {2,34,53,23,122,5,0,6,32,43,22,46,1000,3,452};
 
 	public void initialize() {
+		
 		Label[] texts = {lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14 };
 		for(int i = 0; i < texts.length; i++) {
 			texts[i].setText(Integer.toString(array[i]));
 		}
+		
 		selectAlgo.setValue("Select Algorithm");
 		
-		ObservableList<String> options = 
+		ObservableList<String> algoOptions = 
 			    FXCollections.observableArrayList(
 			        "Bubble",
 			        "Heap",
@@ -39,7 +45,20 @@ public class MainController extends main {
 			        "Quick",
 			        "Insertion"
 			    );
-			 selectAlgo.getItems().addAll(options);
+			 selectAlgo.getItems().addAll(algoOptions);
+			 
+		Lang.setValue("Select Language");
+		
+		ObservableList<String> langOptions = 
+			    FXCollections.observableArrayList(
+			        "Java",
+			        "JavaScript",
+			        "Python",
+			        "C++",
+			        "Pseudo code"
+			    );
+		 Lang.getItems().addAll(langOptions);
+
 	}
 	public void toTestScreen() {
    	    {
@@ -66,6 +85,7 @@ public class MainController extends main {
 			break;
 		case "Python" :
 			lang = "python";
+			code.setText(ch.python("quick"));
 			break;
 		case "JavaScript" :
 			lang = "js";
@@ -79,19 +99,24 @@ public class MainController extends main {
 	public void sort() {
 			switch(selectAlgo.getValue().toString()) {
 			case "Merge" :
-				sort.startMerge(array);
+				array = sort.startMerge(array);
+				setText();
 				break;
 			case "Bubble" :
-				sort.bubbleSort(array);
+				array = sort.bubbleSort(array);
+				setText();
 				break;
 			case "Quick" :
-				sort.qSort(array);
+				array = sort.qSort(array);
+				setText();
 				break;
 			case "Heap":
-				sort.heapSort(array);
+				array = sort.heapSort(array);
+				setText();
 				break;
 			case "Insertion" :
-				sort.insertion(array);
+				array = sort.insertion(array);
+				setText();
 				break;
 			case "Select Algorithm":
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -104,4 +129,11 @@ public class MainController extends main {
 				System.out.println("This should never happen");
 			}
 		}
+	
+	public void setText() {
+		Label[] texts = {lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14 };
+		for(int i = 0; i < texts.length; i++) {
+			texts[i].setText(Integer.toString(array[i]));
+		}
+	}
 }
