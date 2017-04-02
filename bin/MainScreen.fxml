@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="740.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <children>
@@ -18,8 +19,8 @@
             <ComboBox fx:id="selectAlgo" layoutX="285.0" layoutY="574.0" prefWidth="150.0" visibleRowCount="5" />
             <Pane layoutX="766.0" prefHeight="740.0" prefWidth="433.0">
                <children>
-                  <ComboBox fx:id="Lang" layoutX="142.0" layoutY="682.0" onAction="#selectLang" prefWidth="150.0" />
-                  <TextArea prefHeight="674.0" prefWidth="433.0" />
+                  <ComboBox fx:id="Lang" layoutX="142.0" layoutY="701.0" onAction="#selectLang" prefWidth="150.0" />
+                  <TextArea fx:id="code" layoutY="14.0" prefHeight="674.0" prefWidth="433.0" />
                </children>
             </Pane>
             <Button fx:id="btnSort" layoutX="558.0" layoutY="574.0" mnemonicParsing="false" onAction="#sort" text="Sort!" />
@@ -62,6 +63,21 @@
                   <Label fx:id="lab14" text="Label" GridPane.columnIndex="14" />
                </children>
             </GridPane>
+            <Rectangle fx:id="r1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" layoutX="158.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="210.0" layoutX="676.0" layoutY="152.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="45.0" layoutX="639.0" layoutY="317.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="225.0" layoutX="602.0" layoutY="137.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="165.0" layoutX="565.0" layoutY="197.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" layoutX="528.0" layoutY="272.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="150.0" layoutX="491.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" layoutX="454.0" layoutY="242.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="75.0" layoutX="417.0" layoutY="287.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="380.0" layoutY="347.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" layoutX="343.0" layoutY="302.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="195.0" layoutX="306.0" layoutY="167.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="105.0" layoutX="269.0" layoutY="257.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="180.0" layoutX="232.0" layoutY="182.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
+            <Rectangle fx:id="r2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="135.0" layoutX="195.0" layoutY="227.0" stroke="BLACK" strokeType="INSIDE" width="28.0" />
          </children>
       </AnchorPane>
    </children>

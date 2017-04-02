@@ -75,16 +75,20 @@ public int[] mergeParts(int lowerIndex, int middle, int higherIndex) {
 public int[] bubbleSort(int[] numArray) {
 	array = numArray;
 	length = array.length;
-	int temp = 0;
-	for (int i = 0; i < length; i++) {
-		for (int j = 1; j < (length - i); j++) {
-			if (array[j - 1] < array[j]) {
-				temp = array[j - 1];
-				array[j - 1] = array[j];
-				array[j] = temp;
-			}
-		}
-	}
+	int n = numArray.length;
+    int temp;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 1; j < (n - i); j++)
+        {
+            if (numArray[j - 1] > numArray[j])
+            {
+                temp = numArray[j - 1];
+                numArray[j - 1] = numArray[j];
+                numArray[j] = temp;
+            }
+        }
+    }
 	return array;
 }
 

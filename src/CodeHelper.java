@@ -11,36 +11,37 @@ private String pBubble = "" +
 "		return numArray";
 
 private String pquick = "" + 
-"		def QuickSort(numbers):\n" +
-"			QuickSort2(numbers, 0, len(numbers) - 1)\n" +
+"def QuickSort(numbers):\n" +
+"	QuickSort2(numbers, 0, len(numbers) - 1)\n" +
+"\n" +
+"def QuickSort2(numbers, low, high):\n" +
+"	if low < high:\n" +
+"		p = Partition(numbers, low, high)\n" +
+"		QuickSort2(numbers, low, p - 1)\n" +
+"		QuickSort2(numbers, p + 1, high)\n" +
 "		\n" +
-"		def QuickSort2(numbers, low, high):\n" +
-"			if low < high:\n" +
-"				p = Partition(numbers, low, high)\n" +
-"				QuickSort2(numbers, low, p - 1)\n" +
-"				QuickSort2(numbers, p + 1, high)\n" +
-"				\n" +
-"		def GetPivot(numbers, low, high):\n" +
-"			middle = (high + low)\n" +
-"			pivot = high\n" +
-"			if numbers[low] < numbers[middle]:\n" +
-"				if numbers[middle] < numbers[high]:\n" +
-"					pivot = middle\n" +
-"			elif numbers[low] < numbers[high]:\n" +
-"				pivot = low\n" +
-"			return pivot\n" +
-"			\n" +
-"		def Partition(numbers, low, high):\n" +
-"			pivotIndex = GetPivot(numbers, low, high)\n" +
-"			pivotValue = numbers[pivotIndex]\n" +
-"			numbers[pivotIndex], numbers[low] = numbers[low], numbers[pivotIndex]\n" +
-"			border = low\n" +
-"			for i in range(low, high + 1):\n" +
-"				if numbers[i] < pivotValue:\n" +
-"					border += 1\n" +
-"					numbers[i], numbers[border] = numbers[border], numbers[i]\n" +
-"			numbers[low], numbers[border] = numbers[border], numbers[low]\n" +
-"			return (border)";
+"def GetPivot(numbers, low, high):\n" +
+"	middle = (high + low)\n" +
+"	pivot = high\n" +
+"	if numbers[low] < numbers[middle]:\n" +
+"		if numbers[middle] < numbers[high]:\n" +
+"			pivot = middle\n" +
+"	elif numbers[low] < numbers[high]:\n" +
+"		pivot = low\n" +
+"	return pivot\n" +
+"	\n" +
+"def Partition(numbers, low, high):\n" +
+"	pivotIndex = GetPivot(numbers, low, high)\n" +
+"	pivotValue = numbers[pivotIndex]\n" +
+"	numbers[pivotIndex], numbers[low] = numbers[low], numbers[pivotIndex]\n" +
+"	border = low\n" +
+"	for i in range(low, high + 1):\n" +
+"		if numbers[i] < pivotValue:\n" +
+"			border += 1\n" +
+"			numbers[i], numbers[border] = numbers[border], numbers[i]\n" +
+"	numbers[low], numbers[border] = numbers[border], numbers[low]\n" +
+"	return (border)";
+//TODO: Put rest of text in here
 CodeHelper() {
 	this.lang = lang;
 	this.algo = algo;
