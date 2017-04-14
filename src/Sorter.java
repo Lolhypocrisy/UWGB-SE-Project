@@ -1,3 +1,11 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+import javafx.animation.ParallelTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class Sorter {
 	
@@ -5,31 +13,33 @@ public class Sorter {
 	private int N;
 	private int[] array;
 	private int length;
-	
+
 	
 //Insertion
-public int[] insertion(int[] input){
-    
+public SequentialTransition insertion(int[] input, ArrayList<Pane> list){
     int temp;
+	SequentialTransition st = new SequentialTransition();
     for (int i = 1; i < input.length; i++) {
         for(int j = i ; j > 0 ; j--){
             if(input[j] < input[j-1]){
                 temp = input[j];
                 input[j] = input[j-1];
                 input[j-1] = temp;
+                st.getChildren().add(swapMe(list.get(j - 1), list.get(j), list));
             }
         }
     }
-    return input;
+    return st;
 }
 	
 //Merge
-public int[] startMerge(int input[]) {
-    array = input;
+public SequentialTransition startMerge(int input[],ArrayList<Pane> list) {
+	SequentialTransition st = new SequentialTransition();
+	array = input;
     length = array.length;
     tempMergArr = new int[length];
     mergeSort(0, length - 1);
-  return array;
+  return st;
 }
 
 public void mergeSort(int lowerIndex, int higherIndex) {
@@ -72,7 +82,8 @@ public int[] mergeParts(int lowerIndex, int middle, int higherIndex) {
 }
 
 //Bubble
-public int[] bubbleSort(int[] numArray) {
+public SequentialTransition bubbleSort(int[] numArray, ArrayList<Pane> list) {
+	SequentialTransition st = new SequentialTransition();
 	array = numArray;
 	length = array.length;
 	int n = numArray.length;
@@ -86,21 +97,24 @@ public int[] bubbleSort(int[] numArray) {
                 temp = numArray[j - 1];
                 numArray[j - 1] = numArray[j];
                 numArray[j] = temp;
+                st.getChildren().add(swapMe(list.get(j-1),list.get(j),list));
             }
         }
     }
-	return array;
+	return st;
 }
 
 //Quick
-public int[] qSort(int[] values)
+public SequentialTransition qSort(int[] values, ArrayList<Pane> list)
 {
+	SequentialTransition st = new SequentialTransition();
 	array = values;
 	length = array.length;
-	return quickSort(0, length - 1);
+	quickSort(0, length - 1, st, list);
+	return st;
 }
 
-public int[] quickSort(int lowerIndex, int higherIndex) {
+public int[] quickSort(int lowerIndex, int higherIndex, SequentialTransition st, ArrayList<Pane> list) {
 	int i = lowerIndex;
 	int j = higherIndex;
 	int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
@@ -113,15 +127,16 @@ public int[] quickSort(int lowerIndex, int higherIndex) {
 		}
 		if (i <= j) {
 			exchangeNumbers(i , j);
+            st.getChildren().add(swapSelect(list.get(i), list.get(j), list));
 			i++;
 			j--;
 		}
 	}
 	if (lowerIndex < j) {
-		quickSort(lowerIndex, j);
+		quickSort(lowerIndex, j, st, list);
 	}
 	if (i < higherIndex) {
-		quickSort(i, higherIndex);
+		quickSort(i, higherIndex, st, list);
 	}
 	return array;
 }
@@ -133,14 +148,15 @@ public void exchangeNumbers(int i, int j) {
 }
 
 //Heap
-public int[] heapSort(int array[]) {
+public SequentialTransition heapSort(int array[],ArrayList<Pane> list) {
+	SequentialTransition st = new SequentialTransition();
 	heapify(array);
 	for (int i = N; i > 0; i--) {
 		swap(array, 0, i);
 		N = N - 1;
 		maxHeap(array, 0);
 	}
-	return array;
+	return st;
 }
 
 public void heapify(int array[]) {
@@ -172,4 +188,51 @@ public void swap(int array[], int i, int j) {
 	array[j] = temp;
 }
 
+private ParallelTransition swapMe(Pane l1, Pane l2, ArrayList<Pane> list) {
+	TranslateTransition t1 = new TranslateTransition();
+    TranslateTransition t2 = new TranslateTransition();
+    t1.setDuration(Duration.millis(100));
+    t2.setDuration(Duration.millis(100));
+    ParallelTransition pl = new ParallelTransition();
+    t1.setNode(l1);
+    t2.setNode(l2);
+    t1.setByX(43);
+    t2.setByX(-43);
+    pl.getChildren().addAll(t1, t2);
+    Collections.swap(list, list.indexOf(l1), list.indexOf(l2));
+    return pl;
+}
+
+private ParallelTransition swapSelect(Pane l1, Pane l2, ArrayList<Pane> list) {
+    int num = 1;
+    Pane sp1 = null, sp2 = null, fSp = null;
+    TranslateTransition t1 = new TranslateTransition();
+    TranslateTransition t2 = new TranslateTransition();
+    ParallelTransition pl = new ParallelTransition();
+    t1.setNode(l1);
+    t2.setNode(l2);
+    t1.setDuration(Duration.millis(1000));
+    t2.setDuration(Duration.millis(1000));
+   
+    boolean outerBreak = false;
+    for (int i = 0; i < list.size(); i++) {
+        if (outerBreak) break;
+        if (list.get(i) == l1 || list.get(i) == l2) {
+            fSp = list.get(i);
+            for (int j = list.indexOf(fSp) + 1; j < list.size(); j++) {
+                if ((list.get(j) == l1 && list.get(j) != fSp) || (list.get(j) == l2 && list.get(j) != fSp)) {
+                    outerBreak = true;
+                    num = j - i;
+                    break;
+                }
+            }
+        }
+    }
+    num *= 43;
+    t1.setByX(num);
+    t2.setByX(-num);
+    Collections.swap(list, list.indexOf(l1), list.indexOf(l2));
+    pl.getChildren().addAll(t1, t2);
+    return pl;
+}
 }
