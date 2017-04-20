@@ -24,6 +24,6 @@
       <Label fx:id="QuickSec" layoutX="292.0" layoutY="300.0" />
       <Label fx:id="HeapSec" layoutX="292.0" layoutY="243.0" />
       <Button fx:id="Sort" layoutX="699.0" layoutY="457.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
-      <Button fx:id="chooseFile" layoutX="354.0" layoutY="457.0" mnemonicParsing="false" text="Choose File..." />
+      <Button fx:id="chooseFile" layoutX="354.0" layoutY="457.0" mnemonicParsing="false" onAction="#getFile" text="Choose File..." />
    </children>
 </AnchorPane>

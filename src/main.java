@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class main extends Application {
 
-	private Stage primaryStage;
+	protected Stage primaryStage;
 	protected static BorderPane rootLayout;
 	
 	public static void main(String[] args) {

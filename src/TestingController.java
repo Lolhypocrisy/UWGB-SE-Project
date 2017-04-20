@@ -1,4 +1,11 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class TestingController extends main {
 	
@@ -44,7 +53,8 @@ private Label InsertionSec;
 @FXML
 private Button Sort;
 //TODO: file chooser will implement user's data
-private int[] data = {2,34,53,23,122,5,0,6,32,43,22,46,1000,3,452};
+private int[] data;
+private File selectedFile;
 public void toMainScreen() {
 	    {
 	        try {
@@ -83,5 +93,32 @@ public void sort() {
 	InsertionTime.setVisible(true);
 	sort.insertion(data);
 	}
+}
+
+public void getFile() throws IOException {
+	FileChooser fc = new FileChooser();
+	fc.setTitle("Select file");
+	fc.getExtensionFilters().addAll(
+			new ExtensionFilter("Text Files", "*.txt"));
+	selectedFile = fc.showOpenDialog(primaryStage);
+	
+	Scanner s = new Scanner(selectedFile);
+	ArrayList<Integer> al = new ArrayList();
+	
+	while(s.hasNextLine())
+		try{
+			al.add(s.nextInt());
+		}catch(NoSuchElementException e){
+			
+		}
+	
+	data = new int[al.size()];
+	
+	for(int x = 0; x<al.size();x++){
+		data[x] = al.get(x);
+	}
+	
+	for(int i : data)
+		System.out.println(i);
 }
 }

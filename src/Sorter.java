@@ -14,8 +14,8 @@ public class Sorter {
 	private int[] array;
 	private int length;
 
-	
-//Insertion
+	 
+//Insertion w/ animation
 public SequentialTransition insertion(int[] input, ArrayList<Pane> list){
     int temp;
 	SequentialTransition st = new SequentialTransition();
@@ -31,8 +31,24 @@ public SequentialTransition insertion(int[] input, ArrayList<Pane> list){
     }
     return st;
 }
-	
-//Merge
+
+//Insertion w/o animation
+public int[] insertion(int[] input){
+    int temp;
+	SequentialTransition st = new SequentialTransition();
+    for (int i = 1; i < input.length; i++) {
+        for(int j = i ; j > 0 ; j--){
+            if(input[j] < input[j-1]){
+                temp = input[j];
+                input[j] = input[j-1];
+                input[j-1] = temp;
+            }
+        }
+    }
+    return input;
+}
+
+//Merge w/ animation
 public SequentialTransition startMerge(int input[],ArrayList<Pane> list) {
 	SequentialTransition st = new SequentialTransition();
 	array = input;
@@ -81,7 +97,17 @@ public int[] mergeParts(int lowerIndex, int middle, int higherIndex) {
     return array;
 }
 
-//Bubble
+//Merge w/o animation
+public int[] startMerge(int input[]) {
+	array = input;
+    length = array.length;
+    tempMergArr = new int[length];
+    mergeSort(0, length - 1);
+  return array;
+}
+
+
+//Bubble w/ animation
 public SequentialTransition bubbleSort(int[] numArray, ArrayList<Pane> list) {
 	SequentialTransition st = new SequentialTransition();
 	array = numArray;
@@ -104,7 +130,28 @@ public SequentialTransition bubbleSort(int[] numArray, ArrayList<Pane> list) {
 	return st;
 }
 
-//Quick
+//Bubble w/o animation
+public int[] bubbleSort(int[] numArray) {
+	array = numArray;
+	length = array.length;
+	int n = numArray.length;
+    int temp;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 1; j < (n - i); j++)
+        {
+            if (numArray[j - 1] > numArray[j])
+            {
+                temp = numArray[j - 1];
+                numArray[j - 1] = numArray[j];
+                numArray[j] = temp;
+            }
+        }
+    }
+	return numArray;
+}
+
+//Quick w/ animation
 public SequentialTransition qSort(int[] values, ArrayList<Pane> list)
 {
 	SequentialTransition st = new SequentialTransition();
@@ -147,7 +194,41 @@ public void exchangeNumbers(int i, int j) {
 	array[j] = temp;
 }
 
-//Heap
+//Quick w/o animation
+public int[] qSort(int[] values)
+{
+	array = values;
+	length = array.length;
+	return quickSort(0, length - 1);
+}
+
+public int[] quickSort(int lowerIndex, int higherIndex) {
+	int i = lowerIndex;
+	int j = higherIndex;
+	int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
+	while (i <= j) {
+		while (array[i] < pivot) {
+			i++;
+		}
+		while (array[j] > pivot) {
+			j--;
+		}
+		if (i <= j) {
+			exchangeNumbers(i , j);
+			i++;
+			j--;
+		}
+	}
+	if (lowerIndex < j) {
+		quickSort(lowerIndex, j);
+	}
+	if (i < higherIndex) {
+		quickSort(i, higherIndex);
+	}
+	return array;
+}
+
+//Heap w/ animation
 public SequentialTransition heapSort(int array[],ArrayList<Pane> list) {
 	SequentialTransition st = new SequentialTransition();
 	heapify(array);
@@ -186,6 +267,17 @@ public void swap(int array[], int i, int j) {
 	int temp = array[i];
 	array[i] = array[j];
 	array[j] = temp;
+}
+
+//Heap w/o animation
+public int[] heapSort(int array[]) {
+	heapify(array);
+	for (int i = N; i > 0; i--) {
+		swap(array, 0, i);
+		N = N - 1;
+		maxHeap(array, 0);
+	}
+	return array;
 }
 
 private ParallelTransition swapMe(Pane l1, Pane l2, ArrayList<Pane> list) {
