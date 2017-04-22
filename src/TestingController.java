@@ -1,9 +1,6 @@
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -55,6 +52,8 @@ private Button Sort;
 //TODO: file chooser will implement user's data
 private int[] data;
 private File selectedFile;
+private long totalTime, startTime, endTime;
+
 public void toMainScreen() {
 	    {
 	        try {
@@ -75,26 +74,48 @@ public void sort() {
 	
 	if(Merge.isSelected()) {
 	MergeTime.setVisible(true);
+	StartT();
 	sort.startMerge(data);
+	EndT();
+	MergeTime.setText("Time: " + totalTime + "ns");
 	}
 	if(Bubble.isSelected()) {
 	BubbleTime.setVisible(true);
+	StartT();
 	sort.bubbleSort(data);
+	EndT();
+	BubbleTime.setText("Time: " + totalTime + "ns");
 	}
 	if(Quick.isSelected()) {
 	QuickTime.setVisible(true);
+	StartT();
 	sort.qSort(data);
+	EndT();
+	QuickTime.setText("Time: " + totalTime + "ns");
 	}
 	if(Heap.isSelected()) {
 	HeapTime.setVisible(true);
+	StartT();
 	sort.heapSort(data);
+	EndT();
+	HeapTime.setText("Time: " + totalTime + "ns");
 	}
 	if(Insertion.isSelected()) {
 	InsertionTime.setVisible(true);
+	StartT();
 	sort.insertion(data);
+	EndT();
+	InsertionTime.setText("Time: " + totalTime + "ns");
 	}
 }
 
+public void StartT(){
+	startTime = System.nanoTime();
+}
+public void EndT(){
+	endTime = System.nanoTime();
+	totalTime = endTime - startTime;
+}
 public void getFile() throws IOException {
 	FileChooser fc = new FileChooser();
 	fc.setTitle("Select file");
@@ -103,7 +124,7 @@ public void getFile() throws IOException {
 	selectedFile = fc.showOpenDialog(primaryStage);
 	
 	Scanner s = new Scanner(selectedFile);
-	ArrayList<Integer> al = new ArrayList();
+	ArrayList<Integer> al = new ArrayList<Integer>();
 	
 	while(s.hasNextLine())
 		try{
