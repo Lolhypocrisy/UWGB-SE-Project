@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -49,8 +51,7 @@ private Label HeapSec;
 private Label InsertionSec;
 @FXML
 private Button Sort;
-//TODO: file chooser will implement user's data
-private int[] data;
+private int[] data = null;
 private File selectedFile;
 private long totalTime, startTime, endTime;
 
@@ -70,6 +71,8 @@ public void toMainScreen() {
 }
 
 public void sort() {
+	try{
+		if(data != null){
 	Sorter sort = new Sorter();
 	
 	if(Merge.isSelected()) {
@@ -107,6 +110,27 @@ public void sort() {
 	EndT();
 	InsertionTime.setText("Time: " + totalTime + "ns");
 	}
+		}
+	if(!(Insertion.isSelected() || Merge.isSelected() || Bubble.isSelected() || Heap.isSelected() || Quick.isSelected()))
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Error");
+		alert.setHeaderText(null);
+		alert.setContentText("Please select at least one algorithm");
+		alert.showAndWait();
+	}
+	}
+	catch(NullPointerException e) {
+
+	}
+	
+	if(data == null) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Error");
+		alert.setHeaderText(null);
+		alert.setContentText("No data has been loaded");
+		alert.showAndWait();
+	}
 }
 
 public void StartT(){
@@ -132,14 +156,12 @@ public void getFile() throws IOException {
 		}catch(NoSuchElementException e){
 			
 		}
+	s.close();
 	
 	data = new int[al.size()];
 	
 	for(int x = 0; x<al.size();x++){
 		data[x] = al.get(x);
 	}
-	
-	for(int i : data)
-		System.out.println(i);
 }
 }

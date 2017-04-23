@@ -24,6 +24,8 @@ public class MainController extends main {
 	@FXML
 	private Button Tester, btnSort;
 	@FXML
+	private Button btnReset;
+	@FXML
 	private ComboBox selectAlgo, Lang;
 	@FXML
 	private Label lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14;
@@ -144,6 +146,8 @@ public class MainController extends main {
 		 panes.add(p12);
 		 panes.add(p13);
 		 panes.add(p14);
+		 
+
 		 }
 	public void toTestScreen() {
    	    {
@@ -228,5 +232,20 @@ public class MainController extends main {
 		for(int i = 0; i < texts.length; i++) {
 			texts[i].setText(Integer.toString(array[i]));
 		}
+	}
+	
+	public void reset() {
+   	    {
+   	        try {
+   	            FXMLLoader loader = new FXMLLoader();
+   	            loader.setLocation(main.class.getResource("MainScreen.fxml"));
+   	            AnchorPane Main = (AnchorPane) loader.load();
+
+   	            main.rootLayout.setCenter(Main);
+   	        } catch (IOException e) 
+   	        {
+   	            e.printStackTrace();
+   	        }
+   	    }
 	}
 }
