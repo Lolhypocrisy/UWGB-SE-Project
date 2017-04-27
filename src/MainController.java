@@ -14,7 +14,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -22,87 +21,89 @@ import javafx.scene.control.Alert.AlertType;
 public class MainController extends main {
 	
 	@FXML
-	private Button Tester, btnSort;
-	@FXML
-	private Button btnReset;
-	@FXML
-	private ComboBox selectAlgo, Lang;
-	@FXML
-	private Label lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14;
-	@FXML
-	public Pane p0;
-	@FXML
-	public Pane	p1; 
-	@FXML
-	public Pane p2; 
-	@FXML
-	public Pane p3; 
-	@FXML
-	public Pane p4; 
-	@FXML
-	public Pane p5; 
-	@FXML
-	public Pane p6; 
-	@FXML
-	public Pane p7; 
-	@FXML
-	public Pane p8; 
-	@FXML
-	public Pane p9;
-	@FXML
-	public Pane p10; 
-	@FXML
-	public Pane p11; 
-	@FXML
-	public Pane p12; 
-	@FXML
-	public Pane p13; 
-	@FXML
-	public Pane p14;
-	@FXML
-	private TextArea code;
-	@FXML
-	private Rectangle r0;
-	@FXML
-	private Rectangle r1; 
-	@FXML
-	private Rectangle r2; 
-	@FXML
-	private Rectangle r3;
-	@FXML
-	private Rectangle r4;
-	@FXML
-	private Rectangle r5;
-	@FXML
-	private Rectangle r6;
-	@FXML
-	private Rectangle r7;
-	@FXML
-	private Rectangle r8;
-	@FXML
-	private Rectangle r9;
-	@FXML
-	private Rectangle r10;
-	@FXML
-	private Rectangle r11;
-	@FXML
-	private Rectangle r12;
-	@FXML
-	private Rectangle r13;
-	@FXML
-	private Rectangle r14;
-	private String lang;
+  	private Button Tester;
+  	@FXML
+  	private Button btnSort;
+  	@FXML
+ 	private Button btnReset;
+ 	@FXML
+  	private ComboBox selectAlgo;
+  	@FXML
+  	private ComboBox Lang;
+  	@FXML
+  	private Label lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14;
+ 	@FXML
+ 	public Pane p0;
+ 	@FXML
+ 	public Pane	p1; 
+ 	@FXML
+ 	public Pane p2; 
+ 	@FXML
+ 	public Pane p3; 
+ 	@FXML
+ 	public Pane p4; 
+ 	@FXML
+ 	public Pane p5; 
+ 	@FXML
+ 	public Pane p6; 
+ 	@FXML
+ 	public Pane p7; 
+ 	@FXML
+ 	public Pane p8; 
+ 	@FXML
+ 	public Pane p9;
+ 	@FXML
+ 	public Pane p10; 
+ 	@FXML
+ 	public Pane p11; 
+ 	@FXML
+ 	public Pane p12; 
+ 	@FXML
+ 	public Pane p13; 
+ 	@FXML
+ 	public Pane p14;
+ 	@FXML
+ 	private TextArea code;
+ 	@FXML
+ 	private Rectangle r0;
+ 	@FXML
+ 	private Rectangle r1; 
+ 	@FXML
+ 	private Rectangle r2; 
+ 	@FXML
+ 	private Rectangle r3;
+ 	@FXML
+ 	private Rectangle r4;
+ 	@FXML
+ 	private Rectangle r5;
+ 	@FXML
+ 	private Rectangle r6;
+ 	@FXML
+ 	private Rectangle r7;
+ 	@FXML
+ 	private Rectangle r8;
+ 	@FXML
+ 	private Rectangle r9;
+ 	@FXML
+ 	private Rectangle r10;
+ 	@FXML
+ 	private Rectangle r11;
+ 	@FXML
+ 	private Rectangle r12;
+ 	@FXML
+ 	private Rectangle r13;
+ 	@FXML
+ 	private Rectangle r14;
+	
+	private String lang, algo;
 	private Sorter sort = new Sorter();
 	private CodeHelper ch =  new CodeHelper();
 	private int[] array = {2,34,53,23,122,5,0,6,32,43,22,46,1000,3,452};
-	private String algo;
-	@FXML
-	private HBox box;
 	private ArrayList<Pane> panes = new ArrayList<>();
 	
 	public void initialize() {
 		Label[] texts = {lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14 };
-		Rectangle[] rect = {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14};
+	
 		for(int i = 0; i < texts.length; i++) {
 			texts[i].setText(Integer.toString(array[i]));
 		}
@@ -147,21 +148,20 @@ public class MainController extends main {
 		 panes.add(p13);
 		 panes.add(p14);
 		 
-
+		 Lang.setDisable(true);
 		 }
+	
 	public void toTestScreen() {
-   	    {
-   	        try {
-   	            FXMLLoader loader = new FXMLLoader();
-   	            loader.setLocation(main.class.getResource("TesterScreen.fxml"));
-   	            AnchorPane Tester = (AnchorPane) loader.load();
-
-   	            main.rootLayout.setCenter(Tester);
-   	        } catch (IOException e) 
-   	        {
-   	            e.printStackTrace();
-   	        }
-   	    }
+	    try {
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(main.class.getResource("TesterScreen.fxml"));
+	        AnchorPane Tester = (AnchorPane) loader.load();
+	
+	        main.rootLayout.setCenter(Tester);
+	    } catch (IOException e) 
+	    {
+	        e.printStackTrace();
+	    }
 	}
 
 	public void selectLang() {
@@ -189,29 +189,55 @@ public class MainController extends main {
 		}
 	}
 	
+	public void setAlgo(){
+		switch(selectAlgo.getValue().toString()) {
+		case "Merge" :
+			algo = "merge";
+			break;
+		case "Bubble" :
+			algo = "bubble";
+			break;
+		case "Quick" :
+			algo = "quick";
+			break;
+		case "Heap":
+			algo = "heap";
+			break;
+		case "Insertion" :
+			algo = "insertion";
+			break;
+		case "Select Algorithm":
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Please select an algorithm");
+			alert.showAndWait();
+			break;
+		default:
+			System.out.println("This should never happen");
+		}
+		
+		Lang.setDisable(false);
+	}
+	
 	public void sort() {
 		SequentialTransition st = new SequentialTransition();
 		
-			switch(selectAlgo.getValue().toString()) {
-			case "Merge" :
+			switch(algo) {
+			case "merge" :
 				st = sort.startMerge(array, panes);
-				algo = "merge";
 				break;
-			case "Bubble" :
+			case "bubble" :
 				st = sort.bubbleSort(array, panes);
-				algo = "bubble";
 				break;
-			case "Quick" :
+			case "quick" :
 				st = sort.qSort(array, panes);
-				algo = "quick";
 				break;
-			case "Heap":
+			case "heap":
 				st = sort.heapSort(array, panes);
-				algo = "heap";
 				break;
-			case "Insertion" :
+			case "insertion" :
 				st = sort.insertion(array, panes);
-				algo = "insertion";
 				break;
 			case "Select Algorithm":
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -223,12 +249,13 @@ public class MainController extends main {
 			default:
 				System.out.println("This should never happen");
 			}
-			
+			btnSort.setDisable(true);
 			st.play();
 		}
 	
 	public void setText() {
 		Label[] texts = {lab0, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9, lab10, lab11, lab12, lab13, lab14 };
+		
 		for(int i = 0; i < texts.length; i++) {
 			texts[i].setText(Integer.toString(array[i]));
 		}

@@ -137,7 +137,6 @@ private String pinsert = "" +
 "\n" +
 "	     alist[position]=currentvalue";
 
-//TODO: Put rest of text in here
 String jbubble = "" + 
 "public int[] bubbleSort(int[] numArray) {\n" +
 "	array = numArray;\n" +
@@ -698,9 +697,76 @@ private String pseudoheap = "" +
 "		else\n" +
 "			return";
 
-//TODO: Still need pseudo merge and insert
-private String pseudoinsert;
-private String pseudomerge;
+private String pseudoinsert = "" +
+"InsertionSort(array[]){\n" +
+"	for (var i = 0; i < array.length -1; i++){\n" +
+"		var j = i + 1;\n" +
+"		var tmp = array[j];\n" +
+"		while (j > 0 && tmp > array[j-1]{\n" +
+"			array[j] = array[j-i];\n" +
+"			j = j - 1;\n" +
+"		}\n" +
+"		array[j] = tmp;\n" +
+"	}\n" +
+"}";
+
+private String pseudomerge = "" +
+"var[] array;\n" +
+"var[] tempMergArr;\n" +
+"var length;\n" +
+" \n" +
+"runMerg(var[] input){\n" +
+"         \n" +
+"    var[] inputArr = input;\n" +
+"      \n" +
+"    sort(inputArr);\n" +
+"    \n" +
+"}\n" +
+"     \n" +
+"sort(var inputArr[]) {\n" +
+"    array = inputArr;\n" +
+"    length = inputArr.length;\n" +
+"    tempMergArr = new int[length];\n" +
+"    doMergeSort(0, length - 1);\n" +
+"}\n" +
+" \n" +
+"doMergeSort(var lowerIndex, var higherIndex) {\n" +
+"        \n" +
+"    if (lowerIndex < higherIndex) {\n" +
+"        var middle = lowerIndex + (higherIndex - lowerIndex) / 2;\n" +
+"        // Below step sorts the left side of the array\n" +
+"        doMergeSort(lowerIndex, middle);\n" +
+"        // Below step sorts the right side of the array\n" +
+"        doMergeSort(middle + 1, higherIndex);\n" +
+"        // Now merge both sides\n" +
+"        mergeParts(lowerIndex, middle, higherIndex);\n" +
+"    }\n" +
+"}\n" +
+" \n" +
+" mergeParts(var lowerIndex, var middle, var higherIndex) {\n" +
+" \n" +
+"    for (var i = lowerIndex; i <= higherIndex; i++) {\n" +
+"        tempMergArr[i] = array[i];\n" +
+"    }\n" +
+"    var i = lowerIndex;\n" +
+"    var j = middle + 1;\n" +
+"    var k = lowerIndex;\n" +
+"    while (i <= middle && j <= higherIndex) {\n" +
+"        if (tempMergArr[i] <= tempMergArr[j]) {\n" +
+"            array[k] = tempMergArr[i];\n" +
+"            i++;\n" +
+"        } else {\n" +
+"            array[k] = tempMergArr[j];\n" +
+"            j++;\n" +
+"        }\n" +
+"        k++;\n" +
+"    }\n" +
+"    while (i <= middle) {\n" +
+"        array[k] = tempMergArr[i]\n" +
+"        k++;\n" +
+"        i++;\n" +
+"    } \n" +
+"}";
 
 public String python(String algo) {
 	switch(algo) {
