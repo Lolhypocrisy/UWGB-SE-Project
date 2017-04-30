@@ -13,16 +13,26 @@
       <CheckBox fx:id="Quick" layoutX="122.0" layoutY="300.0" mnemonicParsing="false" text="Quick" />
       <CheckBox fx:id="Heap" layoutX="122.0" layoutY="243.0" mnemonicParsing="false" text="Heap" />
       <CheckBox fx:id="Insertion" layoutX="122.0" layoutY="351.0" mnemonicParsing="false" text="Insertion" />
-      <Label fx:id="MergeTime" layoutX="250.0" layoutY="193.0" text="Time:" visible="false" />
-      <Label fx:id="BubbleTime" layoutX="250.0" layoutY="409.0" text="Time:" visible="false" />
-      <Label fx:id="InsertionTime" layoutX="250.0" layoutY="351.0" text="Time:" visible="false" />
-      <Label fx:id="QuickTime" layoutX="250.0" layoutY="300.0" text="Time:" visible="false" />
-      <Label fx:id="HeapTime" layoutX="250.0" layoutY="243.0" text="Time:" visible="false" />
-      <Label fx:id="MergeSec" layoutX="292.0" layoutY="193.0" />
-      <Label fx:id="BubbleSec" layoutX="292.0" layoutY="409.0" />
-      <Label fx:id="InsertionSec" layoutX="292.0" layoutY="351.0" />
-      <Label fx:id="QuickSec" layoutX="292.0" layoutY="300.0" />
-      <Label fx:id="HeapSec" layoutX="292.0" layoutY="243.0" />
+	  <Label fx:id="MergeTimeO" layoutX="250.0" layoutY="193.0" text="Time:" visible="false" />
+      <Label fx:id="BubbleTimeO" layoutX="250.0" layoutY="409.0" text="Time:" visible="false" />
+      <Label fx:id="InsertionTimeO" layoutX="250.0" layoutY="351.0" text="Time:" visible="false" />
+      <Label fx:id="QuickTimeO" layoutX="250.0" layoutY="300.0" text="Time:" visible="false" />
+      <Label fx:id="HeapTimeO" layoutX="250.0" layoutY="243.0" text="Time:" visible="false" />
+	  <Label fx:id="MergeMemO" layoutX="380.0" layoutY="193.0" text="Time:" visible="false" />
+      <Label fx:id="BubbleMemO" layoutX="380.0" layoutY="409.0" text="Time:" visible="false" />
+      <Label fx:id="InsertionMemO" layoutX="380.0" layoutY="351.0" text="Time:" visible="false" />
+      <Label fx:id="QuickMemO" layoutX="380.0" layoutY="300.0" text="Time:" visible="false" />
+      <Label fx:id="HeapMemO" layoutX="380.0" layoutY="243.0" text="Time:" visible="false" />
+      <Label fx:id="MergeTime" layoutX="510.0" layoutY="193.0" text="Time:" visible="false" />
+      <Label fx:id="BubbleTime" layoutX="510.0" layoutY="409.0" text="Time:" visible="false" />
+      <Label fx:id="InsertionTime" layoutX="510.0" layoutY="351.0" text="Time:" visible="false" />
+      <Label fx:id="QuickTime" layoutX="510.0" layoutY="300.0" text="Time:" visible="false" />
+      <Label fx:id="HeapTime" layoutX="510.0" layoutY="243.0" text="Time:" visible="false" />
+      <Label fx:id="MergeSec" layoutX="552.0" layoutY="193.0" />
+      <Label fx:id="BubbleSec" layoutX="552.0" layoutY="409.0" />
+      <Label fx:id="InsertionSec" layoutX="552.0" layoutY="351.0" />
+      <Label fx:id="QuickSec" layoutX="552.0" layoutY="300.0" />
+      <Label fx:id="HeapSec" layoutX="552.0" layoutY="243.0" />
       <Button fx:id="Sort" layoutX="699.0" layoutY="457.0" mnemonicParsing="false" onAction="#sort" text="Sort" />
       <Button fx:id="chooseFile" layoutX="354.0" layoutY="457.0" mnemonicParsing="false" onAction="#getFile" text="Choose File..." />
    </children>

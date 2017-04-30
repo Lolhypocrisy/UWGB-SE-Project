@@ -30,6 +30,26 @@ public class TestingController extends main {
  @FXML
  private CheckBox Insertion;
  @FXML
+ private Label MergeTimeO;
+ @FXML
+ private Label BubbleTimeO;
+ @FXML
+ private Label QuickTimeO;
+ @FXML
+ private Label HeapTimeO;
+ @FXML
+ private Label InsertionTimeO;
+ @FXML
+ private Label MergeMemO;
+ @FXML
+ private Label BubbleMemO;
+ @FXML
+ private Label QuickMemO;
+ @FXML
+ private Label HeapMemO;
+ @FXML
+ private Label InsertionMemO;
+ @FXML
  private Label MergeTime;
  @FXML
  private Label BubbleTime;
@@ -76,49 +96,89 @@ private long totalTime, startTime, endTime;
 				Sorter sort = new Sorter();
 				
 				if(Merge.isSelected()) {
+					MergeTimeO.setVisible(true);
+					MergeMemO.setVisible(true);
 					MergeTime.setVisible(true);
 					StartT();
 					sort.startMerge(data);
 					EndT();
+					MergeTimeO.setText("Big O Time: O(n log(n))");
+					MergeMemO.setText("Big O Memory: O(n)");
 					MergeTime.setText("Time: " + totalTime + "ns");
 				}
-				else if(!Merge.isSelected()) MergeTime.setVisible(false);
+				else if(!Merge.isSelected()) {
+					MergeTimeO.setVisible(false);
+					MergeMemO.setVisible(false);
+					MergeTime.setVisible(false);
+				}
 				
 				if(Bubble.isSelected()) {
+					BubbleTimeO.setVisible(true);
+					BubbleMemO.setVisible(true);
 					BubbleTime.setVisible(true);
 					StartT();
 					sort.bubbleSort(data);
 					EndT();
+					BubbleTimeO.setText("Big O Time: O(n^2)");
+					BubbleMemO.setText("Big O Memory: O(1)");
 					BubbleTime.setText("Time: " + totalTime + "ns");
 				}
-				else if(!Bubble.isSelected()) BubbleTime.setVisible(false);
+				else if(!Bubble.isSelected()) {
+					BubbleTimeO.setVisible(false);
+					BubbleMemO.setVisible(false);
+					BubbleTime.setVisible(false);
+				}
 				
 				if(Quick.isSelected()) {
+					QuickTimeO.setVisible(true);
+					QuickMemO.setVisible(true);
 					QuickTime.setVisible(true);
 					StartT();
 					sort.qSort(data);
 					EndT();
+					QuickTimeO.setText("Big O Time: O(n^2)");
+					QuickMemO.setText("Big O Memory: O(log(n))");
 					QuickTime.setText("Time: " + totalTime + "ns");
 				}
-				else if(!Quick.isSelected()) QuickTime.setVisible(false);
+				else if(!Quick.isSelected()) {
+					QuickTimeO.setVisible(false);
+					QuickMemO.setVisible(false);
+					QuickTime.setVisible(false);
+				}
 				
 				if(Heap.isSelected()) {
+					HeapTimeO.setVisible(true);
+					HeapMemO.setVisible(true);
 					HeapTime.setVisible(true);
 					StartT();
 					sort.heapSort(data);
 					EndT();
+					HeapTimeO.setText("Big O Time: O(n log(n))");
+					HeapMemO.setText("Big O Memory: O(1)");
 					HeapTime.setText("Time: " + totalTime + "ns");
 				}
-				else if(!Heap.isSelected()) HeapTime.setVisible(false);
+				else if(!Heap.isSelected()) {
+					HeapTimeO.setVisible(false);
+					HeapMemO.setVisible(false);
+					HeapTime.setVisible(false);
+				}
 				
 				if(Insertion.isSelected()) {
+					InsertionTimeO.setVisible(true);
+					InsertionMemO.setVisible(true);
 					InsertionTime.setVisible(true);
 					StartT();
 					sort.insertion(data);
 					EndT();
+					InsertionTimeO.setText("Big O Time: O(n^2)");
+					InsertionMemO.setText("Big O Memory: O(1)");
 					InsertionTime.setText("Time: " + totalTime + "ns");
 				}
-				else if(!Insertion.isSelected()) InsertionTime.setVisible(false);
+				else if(!Insertion.isSelected()) {
+					InsertionTimeO.setVisible(false);
+					InsertionMemO.setVisible(false);
+					InsertionTime.setVisible(false);
+				}
 			}
 					
 				if(!(Insertion.isSelected() || Merge.isSelected() || Bubble.isSelected() || Heap.isSelected() || Quick.isSelected())) {
@@ -141,10 +201,12 @@ private long totalTime, startTime, endTime;
 	}
 	
 	//Timing mechaism
+	//Starting time of algorithm
 	public void StartT() {
 		startTime = System.nanoTime();
 	}
 	
+	//Ending time of algorithm
 	public void EndT() {
 		endTime = System.nanoTime();
 		totalTime = endTime - startTime;
