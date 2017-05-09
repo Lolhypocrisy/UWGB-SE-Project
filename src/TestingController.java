@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -227,14 +228,23 @@ private long totalTime, startTime, endTime;
 			try{
 				al.add(s.nextInt());
 			}catch(NoSuchElementException e){
-				
+				al.clear();
+				data = null;
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Text file must only contain integers.");
+				alert.showAndWait();
+				break;
 			}
 		s.close();
 		
-		data = new int[al.size()];
-		
-		for(int x = 0; x<al.size();x++){
-			data[x] = al.get(x);
+		if(al.size() != 0){
+			data = new int[al.size()];
+			
+			for(int x = 0; x<al.size();x++){
+				data[x] = al.get(x);
+			}
 		}
 	}
 }

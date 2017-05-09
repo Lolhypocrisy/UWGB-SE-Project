@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,6 +24,7 @@ public class main extends Application {
 		initRootLayout();
 		
 		showMainScreen();
+		primaryStage.setResizable(false);
 	}
 
 	public void initRootLayout() {
@@ -50,7 +50,7 @@ public class main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(main.class.getResource("MainScreen.fxml"));
             AnchorPane mainScreen = (AnchorPane) loader.load();
-
+   
             // Set main menu into the center of root layout.
             rootLayout.setCenter(mainScreen);
            
